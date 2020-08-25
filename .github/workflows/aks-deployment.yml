@@ -51,10 +51,12 @@ jobs:
           userprofile.yml
           user-java.yml
           trips.yml
+          tripviewer.yml
         images: |
           registryrzr0385.azurecr.io/tripinsights/poi:1.0
           registryrzr0385.azurecr.io/tripinsights/userpforile:1.0
           registryrzr0385.azurecr.io/tripinsights/user-java:1.0
           registryrzr0385.azurecr.io/tripinsights/trips:1.0
+          registryrzr0385.azurecr.io/tripinsights/tripviewer:1.0
         imagepullsecrets: |
           hack1reposecret
