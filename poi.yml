@@ -19,13 +19,13 @@ spec:
           - containerPort: 80
           env:
            - name: SQL_USER
-             value: ${{ secrets.SQL_USER }}
+             value: $sql_user
            - name: SQL_PASSWORD
-             value: ${{ secrets.SQL_PASSWORD }}
+             value: $sql_password
            - name: SQL_SERVER
-             value: ${{ secrets.SQL_SERVER }}
+             value: $sql_server
            - name: SQL_DBNAME
-             value: ${{ secrets.SQL_DBNAME }}
+             value: $sql_dbname
 
 ---
 apiVersion: v1
