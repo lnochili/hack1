@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "user"
+  name: "user-java"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user
+      app: user-java
   template:
     metadata:
       labels:
-        app: user 
+        app: user-java 
     spec:
       containers:
-        - name: "user"
+        - name: "user-java"
           image: "registryrzr0385.azurecr.io/tripinsights/user-java:1.0"  
           ports:
           - containerPort: 80
@@ -30,9 +30,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: "user"
+    name: "user-java"
     labels:
-        app: "user"
+        app: "user-java"
 spec:
     type: ClusterIP
     ports:
