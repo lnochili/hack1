@@ -18,14 +18,30 @@ spec:
           ports:
           - containerPort: 80
           env:
-           - name: SQL_USER
-             value: $sqluser
-           - name: SQL_PASSWORD
-             value: $sqlpassword
-           - name: SQL_SERVER
-             value: $sqlserver
-           - name: SQL_DBNAME
-             value: $sqldbname
+            - name: SQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: sqluser
+                  key: sqluser
+                
+            - name: SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sqlpassword
+                  key: sqlpassword
+
+            - name: SQL_SERVER
+              valueFrom:
+                secretKeyRef:
+                   name: sqlserver
+                   key: sqlserver
+
+            - name: SQL_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  name: sqldbname
+                  key: sqldbname
+                  value: sqldbname
 ---
 apiVersion: v1
 kind: Service
