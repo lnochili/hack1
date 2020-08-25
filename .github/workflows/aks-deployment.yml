@@ -9,13 +9,15 @@ on:
 jobs:  
   
   aks-deploy:
-    env: 
+    
     runs-on: ubuntu-latest
     
+    # Deployment to Kubernetes
+    
     steps:
-
-# Deployment to Kubernetes
-
+    - name: checkout code
+      uses: actions/checkout@v2
+      
     - uses: azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}' # Azure credentials
