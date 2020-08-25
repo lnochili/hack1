@@ -25,6 +25,7 @@ jobs:
         cluster-name: 'aks-tripviewer'
       id: login
     
+
     - name: Create namespace
       run: |
         namespacePresent=`kubectl get namespace | grep tripviewer | wc -l`
@@ -37,14 +38,20 @@ jobs:
         container-registry-url: registryrzr0385.azurecr.io
         container-registry-username: ${{ secrets.acr_username }}
         container-registry-password: ${{ secrets.acr_password }}
-        secret-name: hack1reposecret       
+        secret-name: hack1reposecret   
+#    - uses: azure/k8s-create-secret@v1
+#      with:
+#        namespace: 'tripviewer'
+#        secret-type: 'generic'
+#        arguments:  --from-literal=account-name=${{ secrets.AZURE_STORAGE_ACCOUNT }} --from-literal=access-key=${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
+#        secret-name: SQL-connection    
     
     - uses: azure/k8s-deploy@v1
       env:
-        sql_user:     ${{ secrets.SQL_USER }}
-        sql_password: ${{ secrets.SQL_PASSWORD }}
-        sql_server:   ${{ secrets.SQL_SERVER }}
-        sql_dbname:   ${{ secrets.SQL_DBNAME }}
+        sql-user:     ${{ secrets.SQL_USER }}
+        sql-password: ${{ secrets.SQL_PASSWORD }}
+        sql-server:   ${{ secrets.SQL_SERVER }}
+        sql-dbname:   ${{ secrets.SQL_DBNAME }}
       with:
         namespace: tripviewer 
         manifests: |
