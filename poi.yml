@@ -41,7 +41,7 @@ spec:
                 secretKeyRef:
                   name: sqldbname
                   key: sqldbname
-                  value: sqldbname
+
 ---
 apiVersion: v1
 kind: Service
