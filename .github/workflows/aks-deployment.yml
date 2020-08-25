@@ -38,13 +38,14 @@ jobs:
         container-registry-username: ${{ secrets.acr_username }}
         container-registry-password: ${{ secrets.acr_password }}
         secret-name: hack1reposecret       
+    
     - uses: azure/k8s-deploy@v1
       with:
+        namespace: tripviewer 
         manifests: |
           poi.yml
 
         images: |
           registryrzr0385.azurecr.io/tripinsights/poi:1.0
-
         imagepullsecrets: |
           hack1reposecret
