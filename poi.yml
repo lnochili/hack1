@@ -1,3 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sql-user
+data:
+  sqluser: 'c3FsYWRtaW4='
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sql-password
+data:
+  sqlpassword: 'UEBzc3cwcmQxMjMk' 
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sql-server
+data:
+  sqlserver: 'c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA=='
+--
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sql-dbname
+data:
+  sqldbname: 'bXlkcml2aW5nREI='
+--
+
 apiVersion : apps/v1
 kind: Deployment
 metadata:
@@ -21,25 +50,25 @@ spec:
             - name: SQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: sqluser
+                  name: sql-user
                   key: sqluser
                 
             - name: SQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: sqlpassword
+                  name: sql-password
                   key: sqlpassword
 
             - name: SQL_SERVER
               valueFrom:
                 secretKeyRef:
-                   name: sqlserver
+                   name: sql-server
                    key: sqlserver
 
             - name: SQL_DBNAME
               valueFrom:
                 secretKeyRef:
-                  name: sqldbname
+                  name: sql-dbname
                   key: sqldbname
 
 ---
