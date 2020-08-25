@@ -25,13 +25,13 @@ jobs:
         cluster-name: 'aks-tripviewer'
       id: login
     
-#    - name: Create namespace
-#     run: |
-#       namespacePresent=`kubectl get namespace | grep tripviewer | wc -l`
-#       if [ $namespacePresent -eq 0 ]
-#        then
-#            echo `kubectl create namespace tripviewer`
-#        fi
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep tripviewer | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace tripviewer`
+        fi
     - uses: azure/k8s-create-secret@v1
       with:
         container-registry-url: registryrzr0385.azurecr.io
@@ -44,7 +44,7 @@ jobs:
           poi.yml
 
         images: |
-          registryrzr0385.azurecr.io/poi.yml:1.0
+          registryrzr0385.azurecr.io/tripinsights/poi:1.0
 
         imagepullsecrets: |
           hack1reposecret
