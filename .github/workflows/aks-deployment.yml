@@ -40,6 +40,11 @@ jobs:
         secret-name: hack1reposecret       
     
     - uses: azure/k8s-deploy@v1
+      env:
+        sql_user:     ${{ secrets.SQL_USER }}
+        sql_password: ${{ secrets.SQL_PASSWORD }}
+        sql_server:   ${{ secrets.SQL_SERVER }}
+        sql_dbname:   ${{ secrets.SQL_DBNAME }}
       with:
         namespace: tripviewer 
         manifests: |
