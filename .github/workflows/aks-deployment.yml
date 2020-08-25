@@ -39,19 +39,32 @@ jobs:
         container-registry-username: ${{ secrets.acr_username }}
         container-registry-password: ${{ secrets.acr_password }}
         secret-name: hack1reposecret   
-#    - uses: azure/k8s-create-secret@v1
-#      with:
-#        namespace: 'tripviewer'
-#        secret-type: 'generic'
-#        arguments:  --from-literal=account-name=${{ secrets.AZURE_STORAGE_ACCOUNT }} --from-literal=access-key=${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
-#        secret-name: SQL-connection    
-    
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:  --from-literal=SQL_USER=${{ secrets.SQL_USER }}   
+        secret-name: SQL_USER   
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:   --from-literal=SQL_PASSWORD=${{ secrets.SQL_PASSWORD }} 
+        secret-name: SQL_PASSWORD
+   
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:  --from-literal=SQL_SERVER=${{ secrets.SQL_SERVER }} 
+        secret-name: SQL_SERVER 
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:  --from-literal=SQL_DBNAME=${{ secrets.SQL_DBNAME }} 
+        secret-name: SQL_DBNAME 
     - uses: azure/k8s-deploy@v1
-      env:
-        sql-user:     ${{ secrets.SQL_USER }}
-        sql-password: ${{ secrets.SQL_PASSWORD }}
-        sql-server:   ${{ secrets.SQL_SERVER }}
-        sql-dbname:   ${{ secrets.SQL_DBNAME }}
       with:
         namespace: tripviewer 
         manifests: |
