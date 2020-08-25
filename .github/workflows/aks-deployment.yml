@@ -2,6 +2,10 @@ name: CD
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
+#  sqluser: 'c3FsYWRtaW4='
+#  sqlpassword: 'UEBzc3cwcmQxMjMk'
+#  sqlserver: 'c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA=='
+#  sqldbname: 'bXlkcml2aW5nREI='
 on:
   [ push ]
 #    paths: 
@@ -11,7 +15,7 @@ jobs:
   aks-deploy:
     
     runs-on: ubuntu-latest
-    
+
     # Deployment to Kubernetes
     
     steps:
@@ -24,8 +28,7 @@ jobs:
         resource-group: 'teamResources-hackTeam1'
         cluster-name: 'aks-tripviewer'
       id: login
-    
-
+      
     - name: Create namespace
       run: |
         namespacePresent=`kubectl get namespace | grep tripviewer | wc -l`
@@ -39,31 +42,7 @@ jobs:
         container-registry-username: ${{ secrets.acr_username }}
         container-registry-password: ${{ secrets.acr_password }}
         secret-name: hack1reposecret   
-    - uses: azure/k8s-create-secret@v1
-      with:
-        namespace: 'tripviewer'
-        secret-type: 'generic'
-        arguments:  --from-literal=sqluser=${{ secrets.SQL_USER }}   
-        secret-name: sqluser   
-    - uses: azure/k8s-create-secret@v1
-      with:
-        namespace: 'tripviewer'
-        secret-type: 'generic'
-        arguments:   --from-literal=sqlpassword=${{ secrets.SQL_PASSWORD }} 
-        secret-name: sqlpassword
-   
-    - uses: azure/k8s-create-secret@v1
-      with:
-        namespace: 'tripviewer'
-        secret-type: 'generic'
-        arguments:  --from-literal=sqlserver=${{ secrets.SQL_SERVER }} 
-        secret-name: sqlserver
-    - uses: azure/k8s-create-secret@v1
-      with:
-        namespace: 'tripviewer'
-        secret-type: 'generic'
-        arguments:  --from-literal=sqldbname=${{ secrets.SQL_DBNAME }} 
-        secret-name: sqldbname 
+     
     - uses: azure/k8s-deploy@v1
       with:
         namespace: tripviewer 
