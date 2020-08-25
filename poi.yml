@@ -3,7 +3,7 @@ kind: Secret
 metadata:
   name: sql-user
 data:
-  sqluser: 'c3FsYWRtaW4='
+  sqluser: 'c3Fsc2VydmVycnpyMDM4NQ=='
 ---
 apiVersion: v1
 kind: Secret
