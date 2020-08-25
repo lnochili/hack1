@@ -1,0 +1,40 @@
+jobs:  
+  build-and-deploy:
+    env: 
+    runs-on: ubuntu-latest
+    steps:
+
+# Deployment to Kubernetes
+
+    - uses: azure/aks-set-context@v1
+      with:
+        creds: '${{ secrets.AZURE_CREDENTIALS }}' # Azure credentials
+        resource-group: 'teamResources-hackTeam1'
+        cluster-name: 'aks-tripviewer
+'
+      id: login
+    
+#    - name: Create namespace
+#     run: |
+#       namespacePresent=`kubectl get namespace | grep tripviewer | wc -l`
+#       if [ $namespacePresent -eq 0 ]
+#        then
+#            echo `kubectl create namespace tripviewer`
+#        fi
+    - uses: azure/k8s-create-secret@v1
+      with:
+        container-registry-url: registryrzr0385.azurecr.io
+        container-registry-username: registryrzr0385
+        container-registry-password: ${{ secrets.acr_aksrepo2505_password }}
+        secret-name: aksrepo2505dockerauth       
+    - uses: azure/k8s-deploy@v1
+      with:
+        manifests: |
+          manifests/deployment.yml
+          manifests/ingress.yml
+          manifests/service.yml
+        images: |
+          aksrepo2505.azurecr.io/myshuttle-web:${{ github.sha }}
+          aksrepo2505.azurecr.io/myshuttle-db:${{ github.sha }}
+        imagepullsecrets: |
+          aksrepo2505dockerauth
