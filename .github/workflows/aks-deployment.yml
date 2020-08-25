@@ -1,7 +1,17 @@
+name: CD
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    paths: 
+        [ .github/workflows ]
 jobs:  
-  build-and-deploy:
+  
+  aks-deploy:
     env: 
     runs-on: ubuntu-latest
+    
     steps:
 
 # Deployment to Kubernetes
@@ -24,17 +34,16 @@ jobs:
     - uses: azure/k8s-create-secret@v1
       with:
         container-registry-url: registryrzr0385.azurecr.io
-        container-registry-username: registryrzr0385
-        container-registry-password: ${{ secrets.acr_aksrepo2505_password }}
-        secret-name: aksrepo2505dockerauth       
+        container-registry-username: ${{ secrets.acr_username }}
+        container-registry-password: ${{ secrets.acr_password }}
+        secret-name: hack1reposecret       
     - uses: azure/k8s-deploy@v1
       with:
         manifests: |
-          manifests/deployment.yml
-          manifests/ingress.yml
-          manifests/service.yml
+          poi.yml
+
         images: |
-          aksrepo2505.azurecr.io/myshuttle-web:${{ github.sha }}
-          aksrepo2505.azurecr.io/myshuttle-db:${{ github.sha }}
+          registryrzr0385.azurecr.io/poi.yml:1.0
+
         imagepullsecrets: |
-          aksrepo2505dockerauth
+          hack1reposecret
