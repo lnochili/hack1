@@ -49,7 +49,7 @@ jobs:
         manifests: |
           poi.yml
           userprofile.yml
-          user.yml
+          user-java.yml
           trips.yml
         images: |
           registryrzr0385.azurecr.io/tripinsights/poi:1.0
