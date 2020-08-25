@@ -3,7 +3,7 @@ kind: Secret
 metadata:
   name: sql-user
 data:
-  sqluser: c3Fsc2VydmVycnpyMDM4NQ==
+  sqluser: c2E=
 ---
 apiVersion: v1
 kind: Secret
@@ -17,7 +17,7 @@ kind: Secret
 metadata:
   name: sql-server
 data:
-  sqlserver: c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA==
+  sqlserver: c3Fsc2VydmVyMDM4NQ==
 ---
 apiVersion: v1
 kind: Secret
