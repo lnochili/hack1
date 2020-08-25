@@ -3,28 +3,28 @@ kind: Secret
 metadata:
   name: sql-user
 data:
-  sqluser: 'c3Fsc2VydmVycnpyMDM4NQ=='
+  sqluser: c3Fsc2VydmVycnpyMDM4NQ==
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: sql-password
 data:
-  sqlpassword: 'UEBzc3cwcmQxMjMk' 
+  sqlpassword: UEBzc3cwcmQxMjMk 
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: sql-server
 data:
-  sqlserver: 'c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA=='
+  sqlserver: c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA==
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: sql-dbname
 data:
-  sqldbname: 'bXlkcml2aW5nREI='
+  sqldbname: bXlkcml2aW5nREI=
 ---
 
 apiVersion : apps/v1
