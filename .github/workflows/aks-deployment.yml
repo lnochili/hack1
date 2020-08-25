@@ -5,7 +5,7 @@ name: CD
 on:
   push:
     paths: 
-        [ .github/workflows ]
+        [ .github/workflows/aks-deployment.yml ]
 jobs:  
   
   aks-deploy:
