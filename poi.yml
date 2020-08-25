@@ -18,14 +18,14 @@ metadata:
   name: sql-server
 data:
   sqlserver: 'c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA=='
---
+---
 apiVersion: v1
 kind: Secret
 metadata:
   name: sql-dbname
 data:
   sqldbname: 'bXlkcml2aW5nREI='
---
+---
 
 apiVersion : apps/v1
 kind: Deployment
