@@ -48,8 +48,10 @@ jobs:
         namespace: tripviewer 
         manifests: |
           poi.yml
+          userprofile.yml
 
         images: |
           registryrzr0385.azurecr.io/tripinsights/poi:1.0
+          registryrzr0385.azurecr.io/tripinsights/userpforile:1.0
         imagepullsecrets: |
           hack1reposecret
