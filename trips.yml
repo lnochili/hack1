@@ -1,0 +1,44 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "trips"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trips
+  template:
+    metadata:
+      labels:
+        app: trips 
+    spec:
+      containers:
+        - name: "user"
+          image: "registryrzr0385.azurecr.io/tripinsights/trips:1.0"  
+          ports:
+          - containerPort: 80
+          env:
+           - name: SQL_USER
+             value: "sqladminrZr0385"
+           - name: SQL_PASSWORD
+             value: "P@ssw0rd123$"
+           - name: SQL_SERVER
+             value: "sqlserverrzr0385.database.windows.net"
+           - name: SQL_DBNAME
+             value: "mydrivingDB"
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: "trips"
+    labels:
+        app: "trips"
+spec:
+    type: loadbalacer
+    ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+      name: http
+    selector:
+        app: "user"
