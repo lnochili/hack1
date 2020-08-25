@@ -34,7 +34,7 @@ metadata:
     labels:
         app: "trips"
 spec:
-    type: loadbalacer
+    type: LoadBalacer
     ports:
     - port: 8080
       targetPort: 80
