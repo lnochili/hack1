@@ -43,27 +43,27 @@ jobs:
       with:
         namespace: 'tripviewer'
         secret-type: 'generic'
-        arguments:  --from-literal=sql_user=${{ secrets.SQL_USER }}   
-        secret-name: SQL_USER   
+        arguments:  --from-literal=sql-user=${{ secrets.SQL_USER }}   
+        secret-name: sql-user   
     - uses: azure/k8s-create-secret@v1
       with:
         namespace: 'tripviewer'
         secret-type: 'generic'
-        arguments:   --from-literal=sql_password=${{ secrets.SQL_PASSWORD }} 
-        secret-name: SQL_PASSWORD
+        arguments:   --from-literal=sql-password=${{ secrets.SQL_PASSWORD }} 
+        secret-name: sql-password
    
     - uses: azure/k8s-create-secret@v1
       with:
         namespace: 'tripviewer'
         secret-type: 'generic'
-        arguments:  --from-literal=sql_server=${{ secrets.SQL_SERVER }} 
-        secret-name: SQL_SERVER 
+        arguments:  --from-literal=sql-server=${{ secrets.SQL_SERVER }} 
+        secret-name: sql-server
     - uses: azure/k8s-create-secret@v1
       with:
         namespace: 'tripviewer'
         secret-type: 'generic'
-        arguments:  --from-literal=sql_dbname=${{ secrets.SQL_DBNAME }} 
-        secret-name: SQL_DBNAME 
+        arguments:  --from-literal=sql-dbname=${{ secrets.SQL_DBNAME }} 
+        secret-name: sql-dbname 
     - uses: azure/k8s-deploy@v1
       with:
         namespace: tripviewer 
