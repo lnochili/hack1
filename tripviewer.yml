@@ -26,6 +26,10 @@ spec:
              value: "sqlserverrzr0385.database.windows.net"
            - name: SQL_DBNAME
              value: "mydrivingDB"
+           - name: "USERPROFILE_API_ENDPOINT"
+             value: "http://10.0.184.56"
+           - name: "TRIPS_API_ENDPOINT"
+             value: http://52.139.188.248:8080"
 ---
 apiVersion: v1
 kind: Service
