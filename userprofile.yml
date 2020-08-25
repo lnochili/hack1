@@ -19,7 +19,7 @@ spec:
           - containerPort: 80
           env:
            - name: SQL_USER
-             value: "sqladmin"
+             value: "sqlserverrzr0385"
            - name: SQL_PASSWORD
              value: "P@ssw0rd123$"
            - name: SQL_SERVER
