@@ -22,24 +22,24 @@ spec:
           env:
             - name: SQL_SERVER
               valueFrom:
-              secretKeyRef:
-                name: sqlserver
-                key: sqlserver
+                secretKeyRef:
+                  name: sqlserver
+                  key: sqlserver
             - name: SQL_USER
               valueFrom:
-              secretKeyRef:
-                name: sqluser
-                key: sqluser
+                secretKeyRef:
+                  name: sqluser
+                  key: sqluser
             - name: SQL_PASSWORD
               valueFrom:
-              secretKeyRef:
-                name: sqlpassword
-                key: sqlpassword
+                secretKeyRef:
+                  name: sqlpassword
+                  key: sqlpassword
             - name: SQL_DBNAME
               valueFrom:
-              secretKeyRef:
-                name: sqldbname
-                key: sqldbname
+                secretKeyRef:
+                  name: sqldbname
+                  key: sqldbname
 ---
 apiVersion: v1
 kind: Service
