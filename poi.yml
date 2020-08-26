@@ -24,22 +24,22 @@ spec:
               valueFrom:
               secretKeyRef:
                 name: sqlserver
-                key: sql_server
+                key: sqlserver
             - name: SQL_USER
               valueFrom:
               secretKeyRef:
                 name: sqluser
-                key: sql_user
+                key: sqluser
             - name: SQL_PASSWORD
               valueFrom:
               secretKeyRef:
                 name: sqlpassword
-                key: sql_password
+                key: sqlpassword
             - name: SQL_DBNAME
               valueFrom:
               secretKeyRef:
                 name: sqldbname
-                key: sql_dbname
+                key: sqldbname
 ---
 apiVersion: v1
 kind: Service
