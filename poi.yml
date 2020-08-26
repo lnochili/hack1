@@ -30,17 +30,16 @@ spec:
                 secretKeyRef:
                   name: sqlpassword
                   key: sqlpassword
-             - name: SQL_SERVER
-               valueFrom:
-                 secretKeyRef:
-                   name: sqlserver
-                   key: sqlserver
-             - name: SQL_DBNAME
-               valueFrom:
-                 secretKeyRef:
-                   name: sqldbname
-                   key: sqldbname
-             restartPolicy: Never
+            - name: SQL_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: sqlserver
+                  key: sqlserver
+            - name: SQL_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  name: sqldbname
+                  key: sqldbname
 ---
 apiVersion: v1
 kind: Service
