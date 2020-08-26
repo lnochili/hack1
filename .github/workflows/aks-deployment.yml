@@ -7,8 +7,9 @@ name: CD
 #  sqlserver: 'c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA=='
 #  sqldbname: 'bXlkcml2aW5nREI='
 on:
-  push:
-    paths:  [ .github/workflows/aks-deployment.yml ]
+  [ push ]
+  # push:
+    #paths:  [ .github/workflows/aks-deployment.yml ]
 jobs:  
   
   aks-deploy:
