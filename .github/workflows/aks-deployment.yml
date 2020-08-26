@@ -3,8 +3,9 @@ name: CD
 # Controls when the action will run. Triggers the workflow on push or pull request
 
 on:
-  push:
-    paths:  [ .github/workflows/aks-deployment.yml ]
+  [ push ]
+  #push:
+    #paths:  [ .github/workflows/aks-deployment.yml ]
 jobs:  
   
   aks-deploy:
