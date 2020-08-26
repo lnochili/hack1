@@ -1,45 +1,36 @@
 
 apiVersion : apps/v1
-kind: Deployment
+kind: Pod
 metadata:
   name: "poi" 
   namespace: api
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: poi
-  template:
-    metadata:
-      labels:
-        app: poi 
-    spec:
-      containers:
-        - name: "poi"
-          image: "registryrzr0385.azurecr.io/tripinsights/poi:1.0"
-          ports:
-          - containerPort: 80
-          env:
-            - name: SQL_SERVER
-              valueFrom:
-                secretKeyRef:
-                  name: sqlserver
-                  key: sqlserver
-            - name: SQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: sqluser
-                  key: sqluser
-            - name: SQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: sqlpassword
-                  key: sqlpassword
-            - name: SQL_DBNAME
-              valueFrom:
-                secretKeyRef:
-                  name: sqldbname
-                  key: sqldbname
+  containers:
+    - name: "poi"
+      image: "registryrzr0385.azurecr.io/tripinsights/poi:1.0"
+      ports:
+      - containerPort: 80
+      env:
+        - name: SQL_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: sqlserver
+              key: sqlserver
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: sqluser
+              key: sqluser
+        - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: sqlpassword
+                key: sqlpassword
+        - name: SQL_DBNAME
+            valueFrom:
+              secretKeyRef:
+                name: sqldbname
+                key: sqldbname
 ---
 apiVersion: v1
 kind: Service
