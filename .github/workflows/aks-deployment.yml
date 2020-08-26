@@ -24,7 +24,7 @@ jobs:
       
     - uses: azure/aks-set-context@v1
       with:
-        creds: '${{ secrets.AZURE_CREDENTIALS }}' # Azure credentials
+        creds: '${{ secrets.AKS_CREDENTIALS }}' # Azure credentials
         resource-group: 'teamResources-hackTeam1'
         cluster-name: 'aks-tripviewer'
       id: login
