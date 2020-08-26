@@ -19,6 +19,27 @@ spec:
           image: "registryrzr0385.azurecr.io/tripinsights/poi:1.0"
           ports:
           - containerPort: 80
+          env:
+            - name: SQL_SERVER
+              valueFrom:
+              secretKeyRef:
+                name: sqlserver
+                key: sql_server
+            - name: SQL_USER
+              valueFrom:
+              secretKeyRef:
+                name: sqluser
+                key: sql_user
+            - name: SQL_PASSWORD
+              valueFrom:
+              secretKeyRef:
+                name: sqlpassword
+                key: sql_password
+            - name: SQL_DBNAME
+              valueFrom:
+              secretKeyRef:
+                name: sqldbname
+                key: sql_dbname
 ---
 apiVersion: v1
 kind: Service
