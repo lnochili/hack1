@@ -22,15 +22,15 @@ spec:
               name: sqluser
               key: sqluser
         - name: SQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: sqlpassword
-                key: sqlpassword
+          valueFrom:
+            secretKeyRef:
+              name: sqlpassword
+              key: sqlpassword
         - name: SQL_DBNAME
-            valueFrom:
-              secretKeyRef:
-                name: sqldbname
-                key: sqldbname
+          valueFrom:
+            secretKeyRef:
+              name: sqldbname
+              key: sqldbname
 ---
 apiVersion: v1
 kind: Service
