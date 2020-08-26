@@ -39,7 +39,7 @@ jobs:
         then
             echo `kubectl create namespace api`
         fi
-   
+   # Deploy tripviewer   
     - uses: azure/k8s-deploy@v1
       with:
         namespace: web
@@ -49,6 +49,7 @@ jobs:
           registryrzr0385.azurecr.io/tripinsights/tripviewer:1.0
         imagepullsecrets: |
           hack1reposecret
+# Deploy all other APIs          
     - uses: azure/k8s-deploy@v1
       with:
         namespace: api
@@ -57,12 +58,10 @@ jobs:
           userprofile.yml
           user-java.yml
           trips.yml
-          
         images: |
           registryrzr0385.azurecr.io/tripinsights/poi:1.0
           registryrzr0385.azurecr.io/tripinsights/userpforile:1.0
           registryrzr0385.azurecr.io/tripinsights/user-java:1.0
           registryrzr0385.azurecr.io/tripinsights/trips:1.0
-
         imagepullsecrets: |
           hack1reposecret
