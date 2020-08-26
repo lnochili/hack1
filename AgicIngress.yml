@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: agic-ingress
+  namespace: api
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/poi*
+        backend:
+          serviceName: poi
+          servicePort: 80
+      - path: /api/trips*
+        backend:
+          serviceName: trips
+          servicePort: 80
+      - path: /api/user*
+        backend:
+          serviceName: userprofile
+          servicePort: 80
+      - path: /api/user-java*
+        backend:
+          serviceName: user-java
+          servicePort: 80
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: agic-ingress
+  namespace: web
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: tripviewer
+          servicePort: 80
