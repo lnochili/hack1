@@ -22,24 +22,24 @@ spec:
           env:
             - name: SQL_USER
               valueFrom:
-              secretKeyRef:
-                name: sqluser
-                key: sqluser
+                secretKeyRef:
+                  name: sqluser
+                  key: sqluser
             - name: SQL_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: sqlpassword
-                    key: sqlpassword
+              valueFrom:
+                secretKeyRef:
+                  name: sqlpassword
+                  key: sqlpassword
              - name: SQL_SERVER
-                 valueFrom:
-                   secretKeyRef:
-                     name: sqlserver
-                     key: sqlserver
+               valueFrom:
+                 secretKeyRef:
+                   name: sqlserver
+                   key: sqlserver
              - name: SQL_DBNAME
-                 valueFrom:
-                   secretKeyRef:
-                     name: sqldbname
-                     key: sqldbname
+               valueFrom:
+                 secretKeyRef:
+                   name: sqldbname
+                   key: sqldbname
              restartPolicy: Never
 ---
 apiVersion: v1
