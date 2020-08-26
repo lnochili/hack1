@@ -1,15 +1,10 @@
 name: CD
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-#  sqluser: 'c3FsYWRtaW4='
-#  sqlpassword: 'UEBzc3cwcmQxMjMk'
-#  sqlserver: 'c3Fsc2VydmVycnpyMDM4NS5kYXRhYmFzZS53aW5kb3dzLm5ldA=='
-#  sqldbname: 'bXlkcml2aW5nREI='
+
 on:
-  [ push ]
-  # push:
-    #paths:  [ .github/workflows/aks-deployment.yml ]
+  push:
+    paths:  [ .github/workflows/aks-deployment.yml ]
 jobs:  
   
   aks-deploy:
