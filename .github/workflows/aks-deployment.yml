@@ -30,26 +30,42 @@ jobs:
       
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep tripviewer | wc -l`
+        namespacePresent=`kubectl get namespace | grep web | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace tripviewer`
+            echo `kubectl create namespace web`
+        fi
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep api | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace api`
         fi
    
     - uses: azure/k8s-deploy@v1
       with:
-        namespace: tripviewer 
+        namespace: web
+        manifests: |
+          tripviewer.yml
+        images: |
+          registryrzr0385.azurecr.io/tripinsights/tripviewer:1.0
+        imagepullsecrets: |
+          hack1reposecret
+    - uses: azure/k8s-deploy@v1
+      with:
+        namespace: api
         manifests: |
           poi.yml
           userprofile.yml
           user-java.yml
           trips.yml
-          tripviewer.yml
+          
         images: |
           registryrzr0385.azurecr.io/tripinsights/poi:1.0
           registryrzr0385.azurecr.io/tripinsights/userpforile:1.0
           registryrzr0385.azurecr.io/tripinsights/user-java:1.0
           registryrzr0385.azurecr.io/tripinsights/trips:1.0
-          registryrzr0385.azurecr.io/tripinsights/tripviewer:1.0
+
         imagepullsecrets: |
           hack1reposecret
