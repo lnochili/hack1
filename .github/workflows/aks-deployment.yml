@@ -42,6 +42,31 @@ jobs:
         container-registry-username: ${{ secrets.acr_username }}
         container-registry-password: ${{ secrets.acr_password }}
         secret-name: hack1reposecret   
+        - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:  --from-literal=sqluser=${{ secrets.SQL_USER }}   
+        secret-name: sql-user  
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:   --from-literal=sqlpassword=${{ secrets.SQL_PASSWORD }} 
+        secret-name: sql-password
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:  --from-literal=sqlserver=${{ secrets.SQL_SERVER }} 
+        secret-name: sql-server 
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: 'tripviewer'
+        secret-type: 'generic'
+        arguments:  --from-literal=sqldbname=${{ secrets.SQL_DBNAME }} 
+        secret-name:  sql-dbname
      
     - uses: azure/k8s-deploy@v1
       with:
