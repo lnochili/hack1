@@ -1,0 +1,40 @@
+on:
+  push:
+    paths:  [ .github/workflows/insurance-deploy.yml ]
+jobs:  
+  
+  aks-deploy:
+    
+    runs-on: ubuntu-latest
+
+    # Deployment to Kubernetes
+    
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v2
+      
+    - uses: azure/aks-set-context@v1
+      with:
+        creds: '${{ secrets.AKS_CREDENTIALS }}' # Azure credentials
+        resource-group: 'teamResources-hackTeam1'
+        cluster-name: 'aks-ch3'
+      id: login
+      
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep insurance | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace insurance`
+        fi
+
+   # Deploy insurance  
+    - uses: azure/k8s-deploy@v1
+      with:
+        namespace: insurance
+        manifests: |
+          ./app/insurance.yml
+        images: |
+           registryrzr0385.azurecr.io/insurance:1.0
+        imagepullsecrets: |
+          hack1reposecret
