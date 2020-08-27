@@ -1,16 +1,12 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: backend-policy
+  name: backend-poi
   namespace: api
 spec:
   podSelector:
     matchLabels:
-      app:
-        - poi
-        - userprofile
-        - user-java
-        - trips
+      app:  poi
   ingress:
   - from:
     - namespaceSelector:
@@ -18,16 +14,121 @@ spec:
           app: api
       podSelector:
         matchLabels:
-          app:
-            - userprofile
-            - poi
-            - user-java
-            - trips
+          app: userprofile
+      podSelector:
+        matchLabels:
+          app: poi
+      podSelector:
+        matchLabels:
+          app: user-java
+      podSelector:
+        matchLabels:
+          app: trips
     - namespaceSelector:
         matchLabels:
           app: web
       podSelector:
         matchLabels:
-          app:
-            - tripviewer
+          app: tripviewer
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-userprofile
+  namespace: api
+spec:
+  podSelector:
+    matchLabels:
+      app:  userprofile
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          app: api
+      podSelector:
+        matchLabels:
+          app: userprofile
+      podSelector:
+        matchLabels:
+          app: poi
+      podSelector:
+        matchLabels:
+          app: user-java
+      podSelector:
+        matchLabels:
+          app: trips
+    - namespaceSelector:
+        matchLabels:
+          app: web
+      podSelector:
+        matchLabels:
+          app: tripviewer
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-user-java
+  namespace: api
+spec:
+  podSelector:
+    matchLabels:
+      app:  poi
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          app: api
+      podSelector:
+        matchLabels:
+          app: userprofile
+      podSelector:
+        matchLabels:
+          app: poi
+      podSelector:
+        matchLabels:
+          app: user-java
+      podSelector:
+        matchLabels:
+          app: trips
+    - namespaceSelector:
+        matchLabels:
+          app: web
+      podSelector:
+        matchLabels:
+          app: tripviewer
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-trips
+  namespace: api
+spec:
+  podSelector:
+    matchLabels:
+      app:  trips
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          app: api
+      podSelector:
+        matchLabels:
+          app: userprofile
+      podSelector:
+        matchLabels:
+          app: poi
+      podSelector:
+        matchLabels:
+          app: user-java
+      podSelector:
+        matchLabels:
+          app: trips
+    - namespaceSelector:
+        matchLabels:
+          app: web
+      podSelector:
+        matchLabels:
+          app: tripviewer
+
+
 
