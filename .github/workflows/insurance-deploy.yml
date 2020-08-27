@@ -7,7 +7,7 @@ jobs:
     
     runs-on: ubuntu-latest
 
-    # Deployment to Kubernetes
+    # Deployment to Kubernetes 
     
     steps:
     - name: checkout code
