@@ -18,14 +18,26 @@ spec:
           ports:
           - containerPort: 80
           env:
-           - name: SQL_USER
-             value: "sqladminrZr0385"
-           - name: SQL_PASSWORD
-             value: "P@ssw0rd123$"
-           - name: SQL_SERVER
-             value: "sqlserverrzr0385.database.windows.net"
-           - name: SQL_DBNAME
-             value: "mydrivingDB"
+          - name: SQL_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: sqlserver
+                  key: sqlserver
+          - name: SQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: sqluser
+                  key: sqluser
+          - name: SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sqlpassword
+                  key: sqlpassword
+          - name: SQL_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  name: sqldbname
+                  key: sqldbname
 ---
 apiVersion: v1
 kind: Service
