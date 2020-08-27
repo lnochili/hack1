@@ -33,7 +33,7 @@ jobs:
       with:
         namespace: insurance
         manifests: |
-          ./app/insurance.yml
+          ./app/insurance-app.yml
         images: |
            registryrzr0385.azurecr.io/insurance:1.0
         imagepullsecrets: |
