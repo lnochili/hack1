@@ -20,11 +20,11 @@ spec:
         name: insurance
         resources:
           requests:
-            memory: "4G"
-            cpu: "250m"
+            memory: "8G"
+            cpu: "750m"
           limits:
-            memory: "6G"
-            cpu: "500m"
+            memory: "9G"
+            cpu: "1G"
         ports:
         - containerPort: 8081
           name: http
