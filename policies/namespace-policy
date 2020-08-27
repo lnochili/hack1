@@ -1,0 +1,13 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: ns-policy
+  namespace: api
+spec:
+  matchLabels:
+    app:  api
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          app: web
