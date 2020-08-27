@@ -3,7 +3,7 @@ on:
     paths:  [ .github/workflows/insurance-deploy.yml ]
 jobs:  
   
-  aks-deploy:
+  insruance-deploy:
     
     runs-on: ubuntu-latest
 
